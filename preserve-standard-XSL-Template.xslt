@@ -103,6 +103,7 @@
   <xsl:param name="Digital-Origin"/>
   <xsl:param name="Description"/>
   <xsl:param name="Abstract"/>
+  <xsl:param name="Table-Of-Contents"/>
   <xsl:param name="Preferred-Citation"/>
   <xsl:param name="Comments"/>
   <xsl:param name="Capture-Device"/>
@@ -582,6 +583,9 @@
       </xsl:if>
       <xsl:if test="string-length($Abstract)">
         <abstract type="abstract"><xsl:value-of select="normalize-space($Abstract)"/></abstract>
+      </xsl:if>
+      <xsl:if test="string-length($Table-Of-Contents)">
+        <tableOfContents><xsl:value-of select="normalize-space($Table-Of-Contents)"/></tableOfContents>
       </xsl:if>
       <xsl:if test="string-length($Preferred-Citation)">
         <note type="preferred citation">
