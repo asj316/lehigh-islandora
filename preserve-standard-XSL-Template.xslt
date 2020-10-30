@@ -82,14 +82,12 @@
   <xsl:param name="Creator-15-Institution"/>
   <xsl:param name="Department"/>
   <xsl:param name="Contributors"/>
-  <xsl:param name="Advisors"/>
   <xsl:param name="Type"/>
   <xsl:param name="Genre"/>
   <xsl:param name="Genre-URI"/>
   <xsl:param name="Date-Issued"/>
   <xsl:param name="Date-Issued-Qualifier"/>
   <xsl:param name="Year"/>
-  <xsl:param name="Embargo-Date"/>
   <xsl:param name="Range-Start"/>
   <xsl:param name="Range-End"/>
   <xsl:param name="Date-Captured"/>
@@ -128,8 +126,6 @@
   <xsl:param name="DOI"/>
   <xsl:param name="OCLC-Number"/>
   <xsl:param name="Catalog-URL"/>
-  <xsl:param name="BePress-Identifier"/>
-  <xsl:param name="Report-Number"/>
   <xsl:param name="Rights"/>
   <xsl:param name="Volume-Number"/>
   <xsl:param name="Issue-Number"/>
@@ -157,10 +153,10 @@
             <description><xsl:value-of select="normalize-space($Creator-1-Status)"/></description>
           </xsl:if>
           <xsl:if test="string-length($Creator-1-Email-Address)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-1-Email-Address)"/></affiliation>
+            <affiliation type="email"><xsl:value-of select="normalize-space($Creator-1-Email-Address)"/></affiliation>
           </xsl:if>
           <xsl:if test="string-length($Creator-1-Institution)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-1-Institution)"/></affiliation>
+            <affiliation type="institution"><xsl:value-of select="normalize-space($Creator-1-Institution)"/></affiliation>
           </xsl:if>
           <role>
             <roleTerm type="text" authority="marcrelator">creator</roleTerm>
@@ -181,10 +177,10 @@
             <description><xsl:value-of select="normalize-space($Creator-2-Status)"/></description>
           </xsl:if>
           <xsl:if test="string-length($Creator-2-Email-Address)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-2-Email-Address)"/></affiliation>
+            <affiliation type="email"><xsl:value-of select="normalize-space($Creator-2-Email-Address)"/></affiliation>
           </xsl:if>
           <xsl:if test="string-length($Creator-2-Institution)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-2-Institution)"/></affiliation>
+            <affiliation type="institution"><xsl:value-of select="normalize-space($Creator-2-Institution)"/></affiliation>
           </xsl:if>
           <role>
             <roleTerm type="text" authority="marcrelator">creator</roleTerm>
@@ -205,10 +201,10 @@
             <description><xsl:value-of select="normalize-space($Creator-3-Status)"/></description>
           </xsl:if>
           <xsl:if test="string-length($Creator-3-Email-Address)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-3-Email-Address)"/></affiliation>
+            <affiliation type="email"><xsl:value-of select="normalize-space($Creator-3-Email-Address)"/></affiliation>
           </xsl:if>
           <xsl:if test="string-length($Creator-3-Institution)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-3-Institution)"/></affiliation>
+            <affiliation type="institution"><xsl:value-of select="normalize-space($Creator-3-Institution)"/></affiliation>
           </xsl:if>
           <role>
             <roleTerm type="text" authority="marcrelator">creator</roleTerm>
@@ -229,10 +225,10 @@
             <description><xsl:value-of select="normalize-space($Creator-4-Status)"/></description>
           </xsl:if>
           <xsl:if test="string-length($Creator-4-Email-Address)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-4-Email-Address)"/></affiliation>
+            <affiliation type="email"><xsl:value-of select="normalize-space($Creator-4-Email-Address)"/></affiliation>
           </xsl:if>
           <xsl:if test="string-length($Creator-4-Institution)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-4-Institution)"/></affiliation>
+            <affiliation type="institution"><xsl:value-of select="normalize-space($Creator-4-Institution)"/></affiliation>
           </xsl:if>
           <role>
             <roleTerm type="text" authority="marcrelator">creator</roleTerm>
@@ -253,10 +249,10 @@
             <description><xsl:value-of select="normalize-space($Creator-5-Status)"/></description>
           </xsl:if>
           <xsl:if test="string-length($Creator-5-Email-Address)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-5-Email-Address)"/></affiliation>
+            <affiliation type="email"><xsl:value-of select="normalize-space($Creator-5-Email-Address)"/></affiliation>
           </xsl:if>
           <xsl:if test="string-length($Creator-5-Institution)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-5-Institution)"/></affiliation>
+            <affiliation type="institution"><xsl:value-of select="normalize-space($Creator-5-Institution)"/></affiliation>
           </xsl:if>
           <role>
             <roleTerm type="text" authority="marcrelator">creator</roleTerm>
@@ -277,10 +273,10 @@
             <description><xsl:value-of select="normalize-space($Creator-6-Status)"/></description>
           </xsl:if>
           <xsl:if test="string-length($Creator-6-Email-Address)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-6-Email-Address)"/></affiliation>
+            <affiliation type="email"><xsl:value-of select="normalize-space($Creator-6-Email-Address)"/></affiliation>
           </xsl:if>
           <xsl:if test="string-length($Creator-6-Institution)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-6-Institution)"/></affiliation>
+            <affiliation type="institution"><xsl:value-of select="normalize-space($Creator-6-Institution)"/></affiliation>
           </xsl:if>
           <role>
             <roleTerm type="text" authority="marcrelator">creator</roleTerm>
@@ -301,10 +297,10 @@
             <description><xsl:value-of select="normalize-space($Creator-7-Status)"/></description>
           </xsl:if>
           <xsl:if test="string-length($Creator-7-Email-Address)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-7-Email-Address)"/></affiliation>
+            <affiliation type="email"><xsl:value-of select="normalize-space($Creator-7-Email-Address)"/></affiliation>
           </xsl:if>
           <xsl:if test="string-length($Creator-7-Institution)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-7-Institution)"/></affiliation>
+            <affiliation type="institution"><xsl:value-of select="normalize-space($Creator-7-Institution)"/></affiliation>
           </xsl:if>
           <role>
             <roleTerm type="text" authority="marcrelator">creator</roleTerm>
@@ -325,10 +321,10 @@
             <description><xsl:value-of select="normalize-space($Creator-8-Status)"/></description>
           </xsl:if>
           <xsl:if test="string-length($Creator-8-Email-Address)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-8-Email-Address)"/></affiliation>
+            <affiliation type="email"><xsl:value-of select="normalize-space($Creator-8-Email-Address)"/></affiliation>
           </xsl:if>
           <xsl:if test="string-length($Creator-8-Institution)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-8-Institution)"/></affiliation>
+            <affiliation type="institution"><xsl:value-of select="normalize-space($Creator-8-Institution)"/></affiliation>
           </xsl:if>
           <role>
             <roleTerm type="text" authority="marcrelator">creator</roleTerm>
@@ -349,10 +345,10 @@
             <description><xsl:value-of select="normalize-space($Creator-9-Status)"/></description>
           </xsl:if>
           <xsl:if test="string-length($Creator-9-Email-Address)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-9-Email-Address)"/></affiliation>
+            <affiliation type="email"><xsl:value-of select="normalize-space($Creator-9-Email-Address)"/></affiliation>
           </xsl:if>
           <xsl:if test="string-length($Creator-9-Institution)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-9-Institution)"/></affiliation>
+            <affiliation type="institution"><xsl:value-of select="normalize-space($Creator-9-Institution)"/></affiliation>
           </xsl:if>
           <role>
             <roleTerm type="text" authority="marcrelator">creator</roleTerm>
@@ -373,10 +369,10 @@
             <description><xsl:value-of select="normalize-space($Creator-10-Status)"/></description>
           </xsl:if>
           <xsl:if test="string-length($Creator-10-Email-Address)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-10-Email-Address)"/></affiliation>
+            <affiliation type="email"><xsl:value-of select="normalize-space($Creator-10-Email-Address)"/></affiliation>
           </xsl:if>
           <xsl:if test="string-length($Creator-10-Institution)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-10-Institution)"/></affiliation>
+            <affiliation type="institution"><xsl:value-of select="normalize-space($Creator-10-Institution)"/></affiliation>
           </xsl:if>
           <role>
             <roleTerm type="text" authority="marcrelator">creator</roleTerm>
@@ -397,10 +393,10 @@
             <description><xsl:value-of select="normalize-space($Creator-11-Status)"/></description>
           </xsl:if>
           <xsl:if test="string-length($Creator-11-Email-Address)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-11-Email-Address)"/></affiliation>
+            <affiliation type="email"><xsl:value-of select="normalize-space($Creator-11-Email-Address)"/></affiliation>
           </xsl:if>
           <xsl:if test="string-length($Creator-11-Institution)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-11-Institution)"/></affiliation>
+            <affiliation type="institution"><xsl:value-of select="normalize-space($Creator-11-Institution)"/></affiliation>
           </xsl:if>
           <role>
             <roleTerm type="text" authority="marcrelator">creator</roleTerm>
@@ -421,10 +417,10 @@
             <description><xsl:value-of select="normalize-space($Creator-12-Status)"/></description>
           </xsl:if>
           <xsl:if test="string-length($Creator-12-Email-Address)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-12-Email-Address)"/></affiliation>
+            <affiliation type="email"><xsl:value-of select="normalize-space($Creator-12-Email-Address)"/></affiliation>
           </xsl:if>
           <xsl:if test="string-length($Creator-12-Institution)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-12-Institution)"/></affiliation>
+            <affiliation type="institution"><xsl:value-of select="normalize-space($Creator-12-Institution)"/></affiliation>
           </xsl:if>
           <role>
             <roleTerm type="text" authority="marcrelator">creator</roleTerm>
@@ -445,10 +441,10 @@
             <description><xsl:value-of select="normalize-space($Creator-13-Status)"/></description>
           </xsl:if>
           <xsl:if test="string-length($Creator-13-Email-Address)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-13-Email-Address)"/></affiliation>
+            <affiliation type="email"><xsl:value-of select="normalize-space($Creator-13-Email-Address)"/></affiliation>
           </xsl:if>
           <xsl:if test="string-length($Creator-13-Institution)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-13-Institution)"/></affiliation>
+            <affiliation type="institution"><xsl:value-of select="normalize-space($Creator-13-Institution)"/></affiliation>
           </xsl:if>
           <role>
             <roleTerm type="text" authority="marcrelator">creator</roleTerm>
@@ -469,10 +465,10 @@
             <description><xsl:value-of select="normalize-space($Creator-14-Status)"/></description>
           </xsl:if>
           <xsl:if test="string-length($Creator-14-Email-Address)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-14-Email-Address)"/></affiliation>
+            <affiliation type="email"><xsl:value-of select="normalize-space($Creator-14-Email-Address)"/></affiliation>
           </xsl:if>
           <xsl:if test="string-length($Creator-14-Institution)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-14-Institution)"/></affiliation>
+            <affiliation type="institution"><xsl:value-of select="normalize-space($Creator-14-Institution)"/></affiliation>
           </xsl:if>
           <role>
             <roleTerm type="text" authority="marcrelator">creator</roleTerm>
@@ -493,13 +489,13 @@
             <description><xsl:value-of select="normalize-space($Creator-15-Status)"/></description>
           </xsl:if>
           <xsl:if test="string-length($Creator-15-Email-Address)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-15-Email-Address)"/></affiliation>
+            <affiliation type="email"><xsl:value-of select="normalize-space($Creator-15-Email-Address)"/></affiliation>
           </xsl:if>
           <xsl:if test="string-length($Creator-15-Institution)">
-            <affiliation><xsl:value-of select="normalize-space($Creator-15-Institution)"/></affiliation>
+            <affiliation type="institution"><xsl:value-of select="normalize-space($Creator-15-Institution)"/></affiliation>
           </xsl:if>
           <role>
-            <roleTerm type="text" authority="marcrelator">Creator</roleTerm>
+            <roleTerm type="text" authority="marcrelator">creator</roleTerm>
             <roleTerm type="code" authority="marcrelator">cre</roleTerm>
           </role>
           <role>
@@ -512,22 +508,11 @@
           <name>
             <namePart><xsl:value-of select="normalize-space(.)"/></namePart>
             <role>
-              <roleTerm type="text" authority="marcrelator">Contributor</roleTerm>
+              <roleTerm type="text" authority="marcrelator">contributor</roleTerm>
               <roleTerm type="code" authority="marcrelator">ctb</roleTerm>
             </role>
           </name>
         </xsl:for-each>  
-      </xsl:if>
-      <xsl:if test="string-length($Advisors)">
-        <xsl:for-each select="tokenize($Advisors, ' ; ')">
-        <name>
-          <namePart><xsl:value-of select="normalize-space(.)"/></namePart>
-          <role>
-            <roleTerm type="text" authority="marcrelator">Thesis advisor</roleTerm>
-            <roleTerm type="code" authority="marcrelator">ths</roleTerm>
-          </role>
-        </name>
-        </xsl:for-each>
       </xsl:if>
       <xsl:if test="string-length($Department)">
         <xsl:for-each select="tokenize($Department, ' ; ')">
@@ -551,9 +536,6 @@
       </xsl:if>
       <xsl:if test="string-length($Year)">
         <dateOther type="year"><xsl:value-of select="normalize-space($Year)"/></dateOther>
-      </xsl:if>
-      <xsl:if test="string-length($Embargo-Date)">
-        <dateOther type="embargo-date"><xsl:value-of select="normalize-space($Embargo-Date)"/></dateOther>
       </xsl:if>
       <xsl:if test="string-length($Range-Start)">
         <dateOther point="start"><xsl:value-of select="normalize-space($Range-Start)"/></dateOther>
@@ -707,16 +689,6 @@
       <xsl:if test="string-length($Catalog-URL)">
         <identifier type="uri" displayLabel="Catalog Record"><xsl:value-of select="normalize-space($Catalog-URL)"/></identifier>
       </xsl:if>
-      <xsl:if test="string-length($BePress-Identifier)">
-        <identifier type="bepress" displayLabel="BePress Identifier">
-          <xsl:value-of select="normalize-space($BePress-Identifier)"/>
-        </identifier>
-      </xsl:if>
-      <xsl:if test="string-length($Report-Number)">
-        <identifier type="report-number" displayLabel="Report Number">
-          <xsl:value-of select="normalize-space($Report-Number)"/>
-        </identifier>
-      </xsl:if>
       <xsl:if test="string-length($Rights)">
         <accessCondition type="use and reproduction"><xsl:value-of select="normalize-space($Rights)"/></accessCondition>
       </xsl:if>
@@ -734,23 +706,6 @@
           </xsl:if>
         </part>
       </xsl:if>
-      <extension xmlns:etd="http://www.ntld.org/standards/metadata/etdms/1.0/etdms.xsd">
-        <xsl:if test="string-length($ETD-Degree-Granted)">
-          <etd:name>
-            <xsl:value-of select="normalize-space($ETD-Degree-Granted)"/>
-          </etd:name>
-        </xsl:if>
-        <xsl:if test="string-length($ETD-Degree-Level)">
-          <etd:level>
-            <xsl:value-of select="normalize-space($ETD-Degree-Level)"/>
-          </etd:level>
-        </xsl:if>
-        <xsl:if test="string-length($ETD-Degree-Discipline)">
-          <etd:name>
-            <xsl:value-of select="normalize-space($ETD-Degree-Discipline)"/>
-          </etd:name>
-        </xsl:if>
-      </extension>
     </mods>
   </xsl:template>
 </xsl:stylesheet>
