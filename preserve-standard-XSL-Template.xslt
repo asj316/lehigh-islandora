@@ -129,6 +129,7 @@
   <xsl:param name="Rights"/>
   <xsl:param name="Volume-Number"/>
   <xsl:param name="Issue-Number"/>
+  <xsl:param name="Article-Number"/>
   <xsl:param name="ETD-Degree-Granted"/>
   <xsl:param name="ETD-Degree-Level"/>
   <xsl:param name="ETD-Degree-Discipline"/>
@@ -692,7 +693,7 @@
       <xsl:if test="string-length($Rights)">
         <accessCondition type="use and reproduction"><xsl:value-of select="normalize-space($Rights)"/></accessCondition>
       </xsl:if>
-      <xsl:if test="string-length($Volume-Number) or string-length($Issue-Number)">
+      <xsl:if test="string-length($Volume-Number) or string-length($Issue-Number) or string-length($Article-Number)">
         <part>
           <xsl:if test="string-length($Volume-Number)">
           <detail type="volume">
@@ -703,6 +704,11 @@
           <detail type="issue">
             <number><xsl:value-of select="normalize-space($Issue-Number)"/></number>
           </detail>
+          </xsl:if>
+          <xsl:if test="string-length($Article-Number)">
+            <detail type="issue">
+              <number><xsl:value-of select="normalize-space($Article-Number)"/></number>
+            </detail>
           </xsl:if>
         </part>
       </xsl:if>
