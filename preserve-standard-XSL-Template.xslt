@@ -706,7 +706,7 @@
           </detail>
           </xsl:if>
           <xsl:if test="string-length($Article-Number)">
-            <detail type="issue">
+            <detail type="article">
               <number><xsl:value-of select="normalize-space($Article-Number)"/></number>
             </detail>
           </xsl:if>
