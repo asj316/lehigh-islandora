@@ -7,6 +7,7 @@
   <xsl:param name="Title"/>
   <xsl:param name="Creator"/>
   <xsl:param name="Contributors"/>
+  <xsl:param name="Department"/>
   <xsl:param name="Type"/>
   <xsl:param name="Genre"/>
   <xsl:param name="Genre-URI"/>
@@ -26,6 +27,7 @@
   <xsl:param name="Dimensions"/>
   <xsl:param name="Digital-Origin"/>
   <xsl:param name="Description-Abstract"/>
+  <xsl:param name="Table-Of-Contents"/>
   <xsl:param name="Capture-Device"/>
   <xsl:param name="Staff"/>
   <xsl:param name="PPI"/>
@@ -35,6 +37,7 @@
   <xsl:param name="Subject-Topic"/>
   <xsl:param name="Subject-Name"/>
   <xsl:param name="Subject-Geographic"/>
+  <xsl:param name="Subject-Local-Place"/>
   <xsl:param name="Continent"/>
   <xsl:param name="Country"/>
   <xsl:param name="Region"/>
@@ -54,6 +57,7 @@
   <xsl:param name="Rights"/>
   <xsl:param name="Volume-Number"/>
   <xsl:param name="Issue-Number"/>
+  <xsl:param name="Article-Number"/>
   <!-- Spreadsheet ingest calls the template named "root" to get the resultant
        XML document to be attached to each object; without a "root" template,
        metadata generation will fail. -->
@@ -89,6 +93,16 @@
             </role>
           </name>
         </xsl:for-each>  
+      </xsl:if>
+      <xsl:if test="string-length($Department)">
+        <xsl:for-each select="tokenize($Department, ' ; ')">
+          <name type="corporate">
+            <namePart><xsl:value-of select="normalize-space(.)"/></namePart>
+            <role>
+              <roleTerm>Department</roleTerm>
+            </role>
+          </name>
+        </xsl:for-each>
       </xsl:if>
       <xsl:if test="string-length($Type)">
         <typeOfResource><xsl:value-of select="normalize-space($Type)"/></typeOfResource>
@@ -143,6 +157,9 @@
       <xsl:if test="string-length($Description-Abstract)">
         <abstract><xsl:value-of select="normalize-space($Description-Abstract)"/></abstract>
       </xsl:if>
+      <xsl:if test="string-length($Table-Of-Contents)">
+        <tableOfContents><xsl:value-of select="normalize-space($Table-Of-Contents)"/></tableOfContents>
+      </xsl:if>
       <xsl:if test="string-length($Capture-Device)">
         <note type="capture-device"><xsl:value-of select="normalize-space($Capture-Device)"/></note>
       </xsl:if>
@@ -180,6 +197,13 @@
       <xsl:if test="string-length($Subject-Geographic)">
         <xsl:for-each select="tokenize($Subject-Geographic, ' ; ')">
           <subject authority="naf">
+            <geographic><xsl:value-of select="normalize-space(.)"/></geographic>
+          </subject>
+        </xsl:for-each>
+      </xsl:if>
+      <xsl:if test="string-length($Subject-Local-Place)">
+        <xsl:for-each select="tokenize($Subject-Local-Place, ' ; ')">
+          <subject authority="local">
             <geographic><xsl:value-of select="normalize-space(.)"/></geographic>
           </subject>
         </xsl:for-each>
@@ -242,34 +266,25 @@
       <xsl:if test="string-length($Rights)">
         <accessCondition type="use and reproduction"><xsl:value-of select="normalize-space($Rights)"/></accessCondition>
       </xsl:if>
-      <xsl:if test="string-length($Volume-Number)">
+      <xsl:if test="string-length($Volume-Number) or string-length($Issue-Number) or string-length($Article-Number)">
         <part>
-          <detail type="volume">
-            <number><xsl:value-of select="normalize-space($Volume-Number)"/></number>
-          </detail>
-          <detail type="issue"><xsl:value-of select="normalize-space($Issue-Number)"/></detail>
+          <xsl:if test="string-length($Volume-Number)">
+            <detail type="volume">
+              <number><xsl:value-of select="normalize-space($Volume-Number)"/></number>
+            </detail>
+          </xsl:if>
+          <xsl:if test="string-length($Issue-Number)">
+            <detail type="issue">
+              <number><xsl:value-of select="normalize-space($Issue-Number)"/></number>
+            </detail>
+          </xsl:if>
+          <xsl:if test="string-length($Article-Number)">
+            <detail type="article">
+              <number><xsl:value-of select="normalize-space($Article-Number)"/></number>
+            </detail>
+          </xsl:if>
         </part>
       </xsl:if>
-      <xsl:if test="string-length($Issue-Number)">
-        <part>
-          <detail type="issue">
-            <number><xsl:value-of select="normalize-space($Issue-Number)"/></number>
-          </detail>
-          <detail type="issue"><xsl:value-of select="normalize-space($Issue-Number)"/></detail>
-        </part>
-      </xsl:if>
-      <!-- Spreadsheet ingest intentionally contains no mechanism for creating
-           multi-valued fields; instead, a structure similar to this is expected
-           where the implementation prescribes and documents a method of
-           tokenizing the contents of a cell. Note in the accompanying CSV the
-           use of names like "Name A ; Name B", matching the expected tokenize
-           parameter in use here. -->
-      
-
-
-
-
-
     </mods>
   </xsl:template>
 </xsl:stylesheet>
