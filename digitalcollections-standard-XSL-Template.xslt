@@ -22,12 +22,14 @@
   <xsl:param name="Language-Text"/>
   <xsl:param name="Format"/>
   <xsl:param name="Format-URI"/>
+  <xsl:param name="Original-Coloration-Size"/>
   <xsl:param name="File-Format"/>
   <xsl:param name="Page-Count"/>
   <xsl:param name="Dimensions"/>
   <xsl:param name="Digital-Origin"/>
   <xsl:param name="Description-Abstract"/>
   <xsl:param name="Table-Of-Contents"/>
+  <xsl:param name="Preferred-Citation"/>
   <xsl:param name="Capture-Device"/>
   <xsl:param name="Staff"/>
   <xsl:param name="PPI"/>
@@ -78,7 +80,7 @@
         <name>
           <namePart><xsl:value-of select="normalize-space($Creator)"/></namePart>
           <role>
-            <roleTerm type="text" authority="marcrelator">creator</roleTerm>
+            <roleTerm type="text" authority="marcrelator">Creator</roleTerm>
             <roleTerm type="code" authority="marcrelator">cre</roleTerm>
           </role>
         </name>
@@ -88,7 +90,7 @@
           <name>
             <namePart><xsl:value-of select="normalize-space(.)"/></namePart>
             <role>
-              <roleTerm type="text" authority="marcrelator">contributor</roleTerm>
+              <roleTerm type="text" authority="marcrelator">Contributor</roleTerm>
               <roleTerm type="code" authority="marcrelator">ctb</roleTerm>
             </role>
           </name>
@@ -131,11 +133,12 @@
       </xsl:if>
       </originInfo>
       <xsl:if test="string-length($Language-Code)">
-        <xsl:for-each select="tokenize($Language-Code, ' ; ')">
-          <language>
-            <languageTerm type="code" authority="iso639-2b"><xsl:value-of select="normalize-space(.)"/></languageTerm>
-          </language>
-        </xsl:for-each>
+        <language>
+          <languageTerm type="code" authority="iso639-2b"><xsl:value-of select="normalize-space($Language-Code)"/></languageTerm>
+          <xsl:if test="string-length($Language-Text)">
+            <languageTerm type="text" authority="iso639-2b"><xsl:value-of select="normalize-space($Language-Text)"/></languageTerm>
+          </xsl:if>
+        </language>
       </xsl:if>
       <physicalDescription>
         <xsl:if test="string-length($Format)">
@@ -153,12 +156,20 @@
         <xsl:if test="string-length($Digital-Origin)">
           <digitalOrigin><xsl:value-of select="normalize-space($Digital-Origin)"/></digitalOrigin>
         </xsl:if>
+        <xsl:if test="string-length($Original-Coloration-Size)">
+          <note type="Original Coloration, Size,and Support"><xsl:value-of select="normalize-space($Original-Coloration-Size)"/></note>
+        </xsl:if>
       </physicalDescription>
       <xsl:if test="string-length($Description-Abstract)">
         <abstract><xsl:value-of select="normalize-space($Description-Abstract)"/></abstract>
       </xsl:if>
       <xsl:if test="string-length($Table-Of-Contents)">
         <tableOfContents><xsl:value-of select="normalize-space($Table-Of-Contents)"/></tableOfContents>
+      </xsl:if>
+      <xsl:if test="string-length($Preferred-Citation)">
+        <note type="preferred citation">
+          <xsl:value-of select="normalize-space($Preferred-Citation)"/>
+        </note>
       </xsl:if>
       <xsl:if test="string-length($Capture-Device)">
         <note type="capture-device"><xsl:value-of select="normalize-space($Capture-Device)"/></note>
