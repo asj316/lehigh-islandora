@@ -14,6 +14,7 @@
   <xsl:param name="Date-Created"/>
   <xsl:param name="Date-Created-Qualifier"/>
   <xsl:param name="Year"/>
+  <xsl:param name="Season"/>
   <xsl:param name="Range-Start"/>
   <xsl:param name="Range-End"/>
   <xsl:param name="Date-Captured"/>
@@ -118,6 +119,9 @@
       </xsl:if>
       <xsl:if test="string-length($Year)">
         <dateOther type="year"><xsl:value-of select="normalize-space($Year)"/></dateOther>
+      </xsl:if>
+      <xsl:if test="string-length($Season)">
+          <dateOther type="season"><xsl:value-of select="normalize-space($Season)"/></dateOther>
       </xsl:if>
       <xsl:if test="string-length($Range-Start)">
         <dateOther point="start"><xsl:value-of select="normalize-space($Range-Start)"/></dateOther>
