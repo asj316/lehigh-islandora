@@ -6,6 +6,8 @@
        this is not necessary. -->
   <xsl:param name="Title"/>
   <xsl:param name="Creator"/>
+  <xsl:param name="Creator-Date"/>
+  <xsl:param name="Creator-Description"/>
   <xsl:param name="Contributors"/>
   <xsl:param name="Department"/>
   <xsl:param name="Type"/>
@@ -80,10 +82,16 @@
       <xsl:if test="string-length($Creator)">
         <name>
           <namePart><xsl:value-of select="normalize-space($Creator)"/></namePart>
+          <xsl:if test="string-length($Creator-Date)">
+            <namePart type="date"><xsl:value-of select="normalize-space($Creator-Date)"/></namePart>
+          </xsl:if>
           <role>
             <roleTerm type="text" authority="marcrelator">Creator</roleTerm>
             <roleTerm type="code" authority="marcrelator">cre</roleTerm>
           </role>
+          <xsl:if test="string-length($Creator-Description)">
+            <description><xsl:value-of select="normalize-space($Creator-Description)"/></description>
+          </xsl:if>
         </name>
       </xsl:if>
       <xsl:if test="string-length($Contributors)">
