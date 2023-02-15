@@ -8,6 +8,7 @@
   <xsl:param name="Creator"/>
   <xsl:param name="Creator-Date"/>
   <xsl:param name="Creator-Description"/>
+  <xsl:param name="Photographer"/>
   <xsl:param name="Contributors"/>
   <xsl:param name="Department"/>
   <xsl:param name="Type"/>
@@ -55,10 +56,14 @@
   <xsl:param name="Area"/>
   <xsl:param name="Extraterrestrial-Area"/>
   <xsl:param name="Hierarchical-Geographic-URI"/>
-  <xsl:param name="Collection"/>
+  <xsl:param name="Host"/>
   <xsl:param name="Call-Number"/>
+  <xsl:param name="Reference-Number"/>
   <xsl:param name="OCLC-Number"/>
+  <xsl:param name="DOI"/>
   <xsl:param name="Catalog-URL"/>
+  <xsl:param name="Website"/>
+  <xsl:param name="Barcode"/>
   <xsl:param name="Rights"/>
   <xsl:param name="Volume-Number"/>
   <xsl:param name="Issue-Number"/>
@@ -93,6 +98,17 @@
             <description><xsl:value-of select="normalize-space($Creator-Description)"/></description>
           </xsl:if>
         </name>
+      </xsl:if>
+      <xsl:if test="string-length($Photographer)">
+        <xsl:for-each select="tokenize($Photographer, ' ; ')">
+          <name>
+            <namePart><xsl:value-of select="normalize-space(.)"/></namePart>
+            <role>
+              <roleTerm type="text" authority="marcrelator">photographer</roleTerm>
+              <roleTerm type="code" authority="marcrelator">pht</roleTerm>
+            </role>
+          </name>
+        </xsl:for-each>
       </xsl:if>
       <xsl:if test="string-length($Contributors)">
         <xsl:for-each select="tokenize($Contributors, ' ; ')">
@@ -270,12 +286,15 @@
             </hierarchicalGeographic>
         </subject>
       </xsl:if>
-      <xsl:if test="string-length($Collection)">
-        <relatedItem type="host"  displayLabel="Archival Collection">
+      <xsl:if test="string-length($Host)">
+        <relatedItem type="host">
           <titleInfo>
-            <title><xsl:value-of select="normalize-space($Collection)"/></title>
+            <title><xsl:value-of select="normalize-space($Host)"/></title>
           </titleInfo>
         </relatedItem>
+      </xsl:if>
+      <xsl:if test="string-length($Reference-Number)">
+        <identifier type="reference"><xsl:value-of select="normalize-space($Reference-Number)"/></identifier>
       </xsl:if>
       <xsl:if test="string-length($Call-Number)">
         <identifier type="call-number"><xsl:value-of select="normalize-space($Call-Number)"/></identifier>
@@ -283,8 +302,21 @@
       <xsl:if test="string-length($OCLC-Number)">
         <identifier type="oclc"><xsl:value-of select="normalize-space($OCLC-Number)"/></identifier>
       </xsl:if>
+      <xsl:if test="string-length($DOI)">
+        <identifier type="doi">
+          <xsl:value-of select="normalize-space($DOI)"/>
+        </identifier>
+      </xsl:if>
       <xsl:if test="string-length($Catalog-URL)">
         <identifier type="uri" displayLabel="Catalog Record"><xsl:value-of select="normalize-space($Catalog-URL)"/></identifier>
+      </xsl:if>
+      <xsl:if test="string-length($Website)">
+        <identifier type="uri" displayLabel="Website"><xsl:value-of select="normalize-space($Website)"/></identifier>
+      </xsl:if>
+      <xsl:if test="string-length($Barcode)">
+        <identifier type="barcode">
+          <xsl:value-of select="normalize-space($Barcode)"/>
+        </identifier>
       </xsl:if>
       <xsl:if test="string-length($Rights)">
         <accessCondition type="use and reproduction"><xsl:value-of select="normalize-space($Rights)"/></accessCondition>
